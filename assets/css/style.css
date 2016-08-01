@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body, html  {
+  /*padding: 0;
+  height: 100%;*/
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  background-image: url(../images/usaMap.png);
+  background-size: cover;
+  /*width: 980px;*/
+}
+
+/*html { 
+  background: url(../images/usaMap.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
+h3 {
+  text-align: center;
+}
+
+#title {
+  margin-top: 20%;
+  margin-bottom: 100px;
+  text-align: center;
+  font-size: 30px;
+  font-family: Courier;
+  color: red;
+  text-decoration:
+}
+#startButton {
+  margin-left: 25%;
+  color: black;
+  width: 50%;
+  background-color: orange;
+}
+
+.guessButton {
+  margin-left: 10%;
+  color: black;
+  width: 80%;
+  background-color: beige;
+  height: 50px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.guessButton:hover {
+  background-color: blue;
+}
+.guessLetter {
+  margin-left: 20px;
+}
+#question {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 24px;
+}
+/*col-sm-10 {
+  margin-top: 200px;
+}*/
+
+/*#start {
+ margin:auto;
+ margin-top: 85px;
+ margin-left: 100px;
+ width:800px;
+ height:400px;
+ background: rgba(50, 105, 70, 0.5);
+ position:absolute;
+} */
+
+#start,
+#game4,
+#game3,
+#game2,
+#game1 {
+ margin:auto;
+ margin-top: 85px;
+ margin-left: 100px;
+ width:800px;
+ height:400px;
+ background: rgba(50, 105, 70, 0.5);
+ position:absolute;
+} 
+ 
+/*#game2 {
+ margin:auto;
+ margin-top: 85px;
+ margin-left: 100px;
+ width:800px;
+ height:400px;
+ background: rgba(189, 193, 198, 0.5);
+ position:absolute;
+}*/
+
+.questionText {
+  font-size: 27px;
+  color: white;
+}
+
+.option{
+  width:400px;
+  height: 80px;
+  margin: 15px;
+  font-size: 18px;
+  color: black;
+  cursor: pointer;
+  background-color: white;
+}
+.option:hover {
+  border: grey solid 2px;
+  color: grey;
+}
+
+.feedback1 {
+  width: 150px;
+  font-size: 30px;
+  color: green;
+  background-color: blue;
+  font-family: Courier;
+  text-align: center;
+}
+.feedback2 {
+  width: 150px;
+  font-size: 30px;
+  color: blue;
+  background-color: green;
+  font-family: Courier;
+  text-align: center;
+}
+
+.navbar {
+  height: 0px;
+}
+
+.navbar-inverse  {
+  background-color: grey;
+  height: 70px;
+}
+
+.navbar-right>a {
+color: #ff6600;
+font-family: Helvetica, sans-serif;
+font-size: 38px;
+margin-right: 40px;
+margin-bottom: 20px;
+}
+.navbar-right>a:hover {
+text-decoration: none;
+color: #a6843f;
+}
+
+.navbar-right {
+  margin-top: 10px;
+}
