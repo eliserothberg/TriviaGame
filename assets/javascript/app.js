@@ -5,6 +5,7 @@ $(document).ready(function() {
   $('#game1').hide();
   $('#game2').hide();
   $('#game3').hide();
+ 
    
   var randomQuestion;
   var thisQuestion;
@@ -122,39 +123,35 @@ $(document).ready(function() {
           document.getElementById('choice2').innerHTML = optionMix[1];
           document.getElementById('choice3').innerHTML = optionMix[2];
           document.getElementById('choice4').innerHTML = optionMix[3];
-
-          
       };
 
       var counting = function() {
         count = count -1;
 
         document.getElementById('timer').innerHTML = 'Time remaining: ' + count + ' seconds';
-          if (count == -1) {
-            document.getElementById('timer').innerHTML = 'Time\'s up!';
+           
+           if (count == -1) {
+              document.getElementById('timer').innerHTML = 'Time\'s up!';
         
-            console.log("counter: " + counter + " count = " + count + " countdown = " + countdown)
-            $('#game1').hide();
-            $('#game2').show();
+              console.log("counter: " + counter + " count = " + count + " countdown = " + countdown)
+              $('#game1').hide();
+              $('#game2').show();
             
-            document.getElementById('yesNo').innerHTML = 'Too late! ';
-            document.getElementById('feedback').innerHTML = 'The correct answer is "' + currentAnswer + '"';
-            document.getElementById('answer-pic').src = currentPic;
+              document.getElementById('yesNo').innerHTML = 'Too late! ';
+              document.getElementById('feedback').innerHTML = 'The correct answer is "' + currentAnswer + '"';
+              document.getElementById('answer-pic').src = currentPic;
               
-            $("#game2").delay(3000).fadeOut(100);
-            $('#game1').html(nextQuestion);
-            console.log("thisQuestion answer: " + thisQuestion.answer);
-            $('#game1').delay(3500).fadeIn(100);
-            wrong++;
-            questionNumber++;
-            keepPlaying = true;
-            return;
-            }
-
-            clearInterval(counter);
-
+              $("#game2").delay(3000).fadeOut(100);
+              $('#game1').html(nextQuestion);
+              console.log("thisQuestion answer: " + thisQuestion.answer);
+              $('#game1').delay(3500).fadeIn(100);
+              wrong++;
+              questionNumber++;
+              keepPlaying = true;
+              return;
+              }
       };
-      
+   
       function compareGuess() {
 
         $(document).on('click','.guessButton', function() {    
@@ -185,53 +182,53 @@ $(document).ready(function() {
             questionNumber++;
             keepPlaying = true;
           }
-
-            if(questionNumber === numberOfQuestions) {
-              $('#game1').hide();
-              $('#game3').delay(3500).fadeIn(100);
+          if(questionNumber === numberOfQuestions) {
+            $('#game1').hide();
+            $('#game3').delay(3500).fadeIn(100);
               document.getElementById('win').innerHTML = 'Correct answers: ' + right + '.';
               document.getElementById('loss').innerHTML = 'Wrong answers: ' + wrong + '.';
               keepPlaying: false;
             }
             else {
-               $('#game1').html(nextQuestion);
-                console.log("thisQuestion answer: " + thisQuestion.answer);
-                $('#game1').delay(3500).fadeIn(100);
+              $('#game1').html(nextQuestion);
+              console.log("thisQuestion answer: " + thisQuestion.answer);
+              $('#game1').delay(3500).fadeIn(100);
 
-                console.log("in game1 div = : " + currentQuestion);
-                document.getElementById('btw').innerHTML = 'P.S. Everything listed here is illegal in at least one American state.';
-                console.log("again- wrong: " + wrong + " and right: " + right);
-                console.log("questions asked = : " + questionNumber + " + and numberOfQuestions: " + numberOfQuestions);
-                keepPlaying: true;
+              console.log("in game1 div = : " + currentQuestion);
+              document.getElementById('btw').innerHTML = 'P.S. Everything listed here is illegal in at least one American state.';
+              console.log("again- wrong: " + wrong + " and right: " + right);
+              console.log("questions asked = : " + questionNumber + " + and numberOfQuestions: " + numberOfQuestions);
+              keepPlaying: true;
               // clearInterval(counter);
-                }
+            }     
       });
 
     };
 
    
     nextQuestion();
+ 
   };
-  //               function newGame() {
-  //                 $('#retry').click(function () {
-  //                 var randomQuestion;
-  //                 var thisQuestion;
-  //                 var justOptions;
-  //                 var optionMix;
-  //                 var currentAnswer;
-  //                 var currentQuestion;
-  //                 var currentPic;
-  //                 var counter;
-  //                 var count = 13;
-  //                 var right = 0;
-  //                 var wrong = 0;
-  //                 var questionNumber= 0;
-  //                 var numberOfQuestions;
-  //                 var asked = [];
-  //                 var alreadyUsed;
-  //                 keepPlaying = true;
-  //                 });
-  //               };
 
+  // $('#restartButton').click(newGame() {
+//  $('#restartButton').on('click'.newGame(event)) { 
+//   var randomQuestion;
+//   var thisQuestion;
+//   var justOptions;
+//   var optionMix;
+//   var currentAnswer;
+//   var currentQuestion;
+//   var currentPic;
+//   var counter;
+//   var count = 13;
+//   var right = 0;
+//   var wrong = 0;
+//   var questionNumber= 0;
+//   var numberOfQuestions;
+//   var asked = [];
+//   var alreadyUsed;
+//   keepPlaying = true;
+  
+// };
   newGame();
 });

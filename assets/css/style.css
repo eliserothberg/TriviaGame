@@ -15,7 +15,15 @@ body, html  {
 }
 
 h3 {
+  font-family: 'Francois One', sans-serif;
   text-align: center;
+}
+
+#loss,
+#win {
+font-size: 24px;
+text-align: center;
+
 }
 
 #title {
@@ -23,8 +31,8 @@ h3 {
   margin-bottom: 100px;
   text-align: center;
   font-size: 30px;
-  font-family: Courier;
-  color: red;
+  font-family: 'Francois One', sans-serif;
+  color: #66001a;
   text-decoration:
 }
 #startButton {
@@ -44,7 +52,7 @@ h3 {
   text-align: left;
 }
 .guessButton:hover {
-  background-color: blue;
+  background-color: #00664d;
 }
 .guessLetter {
   margin-left: 20px;
@@ -55,6 +63,7 @@ h3 {
   margin-bottom: 20px;
   color: black;
   font-size: 24px;
+  font-family: 'Francois One', sans-serif;
 }
 
 #timer {
@@ -62,6 +71,7 @@ h3 {
   margin-top: 10px;
   font-size: 16px;
   font-weight: bold;
+  font-family: 'Francois One', sans-serif;
   color: black;
 }
 #wrongAnswer {
@@ -69,6 +79,7 @@ h3 {
   font-size: 18px;
    font-weight: bold;
   color: black;
+  font-family: 'Francois One', sans-serif;
 }
 #feedback,
 #yesNo {
@@ -77,6 +88,7 @@ h3 {
   margin-top: 25px;
    font-weight: bold;
   color: black;
+  font-family: 'Francois One', sans-serif;
 }
 
 #start,
@@ -94,18 +106,22 @@ h3 {
 } 
  
  #stats {
-  margin-left: 200px;
-  margin-top: 200px;
+   margin-top: 100px;
+  font-family: 'Francois One', sans-serif;
+  font-size: 24px;
+  text-align: center;
+  color: black;
  }
 
  #restartButton {
-  margin-left: 100px;
+  margin-left: 300px;
   margin-top: 30px;
  }
 
 .questionText {
   font-size: 27px;
   color: white;
+  font-family: 'Francois One', sans-serif;
 }
 
 .option{
@@ -124,35 +140,12 @@ h3 {
 #btw {
   margin-top: 40px;
   text-align: center;
-  font-size: 24px;
+  font-size: 26px;
   color: black;
+  font-family: 'Francois One', sans-serif;
 }
 #feedback {
   color: black;
   text-align: center;
-}
-
-.navbar {
-  height: 0px;
-}
-
-.navbar-inverse  {
-  background-color: grey;
-  height: 70px;
-}
-
-.navbar-right>a {
-color: #ff6600;
-font-family: Helvetica, sans-serif;
-font-size: 38px;
-margin-right: 40px;
-margin-bottom: 20px;
-}
-.navbar-right>a:hover {
-text-decoration: none;
-color: #a6843f;
-}
-
-.navbar-right {
-  margin-top: 10px;
+  font-family: 'Francois One', sans-serif;
 }
