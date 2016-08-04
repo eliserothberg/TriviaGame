@@ -1,12 +1,13 @@
 $(document).ready(function() {
-    // $('#flash').hide();
 
+//hide everything but the start div
   $(".navbar").hide();
   $('#game1').hide();
   $('#game2').hide();
   $('#game3').hide();
  
-   
+  //delineate global variables 
+
   var randomQuestion;
   var thisQuestion;
   var justOptions;
@@ -15,7 +16,7 @@ $(document).ready(function() {
   var currentQuestion;
   var currentPic;
   var counter;
-  var count = 13;
+  var count = 31;
   var right = 0;
   var wrong = 0;
   var questionNumber= 0;
@@ -24,9 +25,7 @@ $(document).ready(function() {
   var alreadyUsed;
   keepPlaying = true;
   
-
-  function newGame() {
-     compareGuess();
+  //questions in object array
 
     var questions = [
 
@@ -79,15 +78,16 @@ $(document).ready(function() {
     },
     ];
 
+    //start game
+
       $('#startButton').click(function(){
 
         $('#start').hide();
         $('#game1').show();
         counter = setInterval(counting, 1000);
       });
-        countdown = count
-        console.log("countdown: " + countdown);
-  
+
+    //get random question -write code to check for dupes??
 
       nextQuestion = function() {
 
@@ -112,18 +112,25 @@ $(document).ready(function() {
 
         if(!keepPlaying) { 
           return true;
+
         }
+
+        //break up chosen answer and corresponding questions and pics
 
           currentAnswer = thisQuestion.answer;
           currentQuestion = thisQuestion.question;
           currentPic = thisQuestion.pic;
          
+         // display  chosen answer and questions
+
           document.getElementById('question').innerHTML = currentQuestion;
           document.getElementById('choice1').innerHTML = optionMix[0];
           document.getElementById('choice2').innerHTML = optionMix[1];
           document.getElementById('choice3').innerHTML = optionMix[2];
           document.getElementById('choice4').innerHTML = optionMix[3];
       };
+
+        // check to see if counter ran down, if so, display time up screen with gif and move on
 
       var counting = function() {
         count = count -1;
@@ -133,7 +140,7 @@ $(document).ready(function() {
            if (count == -1) {
               document.getElementById('timer').innerHTML = 'Time\'s up!';
         
-              console.log("counter: " + counter + " count = " + count + " countdown = " + countdown)
+              console.log("counter: " + counter + " count = " + count)
               $('#game1').hide();
               $('#game2').show();
             
@@ -148,10 +155,14 @@ $(document).ready(function() {
               wrong++;
               questionNumber++;
               keepPlaying = true;
+              count = 33;
               return;
               }
       };
-   
+
+      // check to see if user answer is right or wrong, 
+      // track how many questions asked, rinse repeat
+
       function compareGuess() {
 
         $(document).on('click','.guessButton', function() {    
@@ -182,9 +193,10 @@ $(document).ready(function() {
             questionNumber++;
             keepPlaying = true;
           }
-          if(questionNumber === numberOfQuestions) {
+          if (questionNumber === numberOfQuestions) {
             $('#game1').hide();
-            $('#game3').delay(3500).fadeIn(100);
+            $('#game3').delay(3000).fadeIn(100);
+              clearInterval(counter);
               document.getElementById('win').innerHTML = 'Correct answers: ' + right + '.';
               document.getElementById('loss').innerHTML = 'Wrong answers: ' + wrong + '.';
               keepPlaying: false;
@@ -192,43 +204,39 @@ $(document).ready(function() {
             else {
               $('#game1').html(nextQuestion);
               console.log("thisQuestion answer: " + thisQuestion.answer);
-              $('#game1').delay(3500).fadeIn(100);
+              
+              $('#game1').delay(3000).fadeIn(100);
 
               console.log("in game1 div = : " + currentQuestion);
-              document.getElementById('btw').innerHTML = 'P.S. Everything listed here is illegal in at least one American state.';
-              console.log("again- wrong: " + wrong + " and right: " + right);
+              document.getElementById('btw').innerHTML = 'P.S. Every answer option included here is illegal in at least one American state.';
+              console.log("wrong: " + wrong + " and right: " + right);
               console.log("questions asked = : " + questionNumber + " + and numberOfQuestions: " + numberOfQuestions);
               keepPlaying: true;
-              // clearInterval(counter);
-            }     
+            }
+            if (questionNumber +1) {
+              console.log('questionNumber is: ' + questionNumber + ' and count is: ' + count);
+              count = 33;
+            }
       });
 
     };
 
-   
+    compareGuess();
     nextQuestion();
- 
-  };
 
-  // $('#restartButton').click(newGame() {
-//  $('#restartButton').on('click'.newGame(event)) { 
-//   var randomQuestion;
-//   var thisQuestion;
-//   var justOptions;
-//   var optionMix;
-//   var currentAnswer;
-//   var currentQuestion;
-//   var currentPic;
-//   var counter;
-//   var count = 13;
-//   var right = 0;
-//   var wrong = 0;
-//   var questionNumber= 0;
-//   var numberOfQuestions;
-//   var asked = [];
-//   var alreadyUsed;
-//   keepPlaying = true;
-  
-// };
-  newGame();
+    // restart game on restart button click
+ 
+          $('#restartButton').click(function() {
+            $('#game3').hide();
+            $('#game1').hide();
+            $('#start').delay(1000).fadeIn(100);
+            thisQuestion;
+            count = 30;
+            right = 0;
+            wrong = 0;
+            clearInterval(counter);
+            questionNumber = 0;
+            keepPlaying = true;
+         });           
+
 });
