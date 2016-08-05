@@ -21,8 +21,8 @@ $(document).ready(function() {
   var wrong = 0;
   var questionNumber= 0;
   var numberOfQuestions;
-  var asked = [];
-  var alreadyUsed;
+  // var asked = [];
+  // var alreadyUsed;
   keepPlaying = true;
   
   //questions in object array
@@ -35,6 +35,7 @@ $(document).ready(function() {
       'pic': "http://i.giphy.com/Jjq7X7QCYuRUc.gif",
       options: ['take a picture of a rabbit from January to April without an official permit.', 'use a lasso to catch a fish.', 'sell a hollow log.', 
       'shoot any game other than whales from a moving automobile.'],
+      'asked': false
     },
     {
       'question' : 'In Tennessee it is illegal to: ',
@@ -42,6 +43,7 @@ $(document).ready(function() {
      'pic': "http://i.giphy.com/oenruB2DKC7p6.gif",
       options: [ 'share your Netflix password.', 'pretend that one’s parents are rich.', 'serve butter substitutes in state prisons.', 
       'sell milk at liquor stores.'],
+      'asked': false
     },
     {
       'question' : 'In Florida it is illegal to: ',
@@ -51,6 +53,7 @@ $(document).ready(function() {
       'refuse a person a glass of water.', 
       'wear a bullet-proof vest while committing a murder.', 
       'have an ice cream cone in your back pocket at any time.'],
+      'asked': false
     },
     {
       'question' : 'In Arizona it is illegal to: ',
@@ -59,6 +62,7 @@ $(document).ready(function() {
       options: ['let a donkey sleep in a bathtub.', 'dye a duckling blue and offer it for sale unless more than six are for sale at once.', 
       'snore unless all bedroom windows are closed and securely locked.', 
       'have a mustache if the bearer has a tendency to habitually kiss other humans.'],
+      'asked': false
     },
     {
       'question' : 'In West Virginia it is illegal to: ',
@@ -68,6 +72,7 @@ $(document).ready(function() {
       'cross state lines with a duck atop one\'s head.', 
       'bathe between the months of October and March.', 
       'use profanity in front of a dead body which lies in a funeral home or in a coroners office.'],
+      'asked': false
     },
     {
       'question' : 'In New Jersey it is illegal to: ',
@@ -75,6 +80,7 @@ $(document).ready(function() {
       'pic': "http://i.giphy.com/1463o17ejELYqs.gif",
       options: ['knit during the fishing season if you are male.', 'eat more than three sandwiches at a wake.', 
       'fish alone if you are an unmarried woman.', 'shoot a rabbit from a motorboat.'],
+      'asked': false
     },
     ];
 
@@ -89,14 +95,16 @@ $(document).ready(function() {
 
     //get random question -write code to check for dupes??
 
-      nextQuestion = function() {
+      
+      function nextQuestion() {
 
         var randomQuestion = Math.floor(Math.random() * questions.length);
           thisQuestion = questions[randomQuestion];
           justOptions = thisQuestion.options;
           numberOfQuestions = questions.length;
           console.log("thisQuestion: " + thisQuestion);
-
+          thisQuestion.asked =true;
+          console.log("thisQuestion asked?: " + thisQuestion.asked);
         Array.prototype.randomize = function() {
           var i = this.length, j, temp;
             while ( --i ) {
