@@ -16,11 +16,13 @@ $(document).ready(function() {
   var currentQuestion;
   var currentPic;
   var counter;
+  var askedIt;
   var count = 31;
   var right = 0;
   var wrong = 0;
   var questionNumber= 0;
   var numberOfQuestions;
+  num = 0;
   // var asked = [];
   // var alreadyUsed;
   keepPlaying = true;
@@ -30,11 +32,20 @@ $(document).ready(function() {
     var questions = [
 
     {
-      'question' : 'In Wyoming it is illegal to: ',
-      'answer': 'take a picture of a rabbit from January to April without an official permit.',
-      'pic': "http://i.giphy.com/Jjq7X7QCYuRUc.gif",
-      options: ['take a picture of a rabbit from January to April without an official permit.', 'use a lasso to catch a fish.', 'sell a hollow log.', 
-      'shoot any game other than whales from a moving automobile.'],
+      'question' : 'In Arizona it is illegal to: ',
+      'answer': 'let a donkey sleep in a bathtub.',
+      'pic': "http://i.giphy.com/70XY5U7YIYh2w.gif",
+      options: ['let a donkey sleep in a bathtub.', 'dye a duckling blue and offer it for sale unless more than six are for sale at once.', 
+      'snore unless all bedroom windows are closed and securely locked.', 
+      'have a mustache if the bearer has a tendency to habitually kiss other humans.'],
+      'asked': false
+    },
+    {
+      'question' : 'In New Jersey it is illegal to: ',
+      'answer': 'knit during the fishing season if you are male.',
+      'pic': "http://i.giphy.com/1463o17ejELYqs.gif",
+      options: ['knit during the fishing season if you are male.', 'eat more than three sandwiches at a wake.', 
+      'fish alone if you are an unmarried woman.', 'shoot a rabbit from a motorboat.'],
       'asked': false
     },
     {
@@ -56,15 +67,6 @@ $(document).ready(function() {
       'asked': false
     },
     {
-      'question' : 'In Arizona it is illegal to: ',
-      'answer': 'let a donkey sleep in a bathtub.',
-      'pic': "http://i.giphy.com/70XY5U7YIYh2w.gif",
-      options: ['let a donkey sleep in a bathtub.', 'dye a duckling blue and offer it for sale unless more than six are for sale at once.', 
-      'snore unless all bedroom windows are closed and securely locked.', 
-      'have a mustache if the bearer has a tendency to habitually kiss other humans.'],
-      'asked': false
-    },
-    {
       'question' : 'In West Virginia it is illegal to: ',
       'answer': 'whistle underwater.',
       'pic': "http://i.giphy.com/3o6gEazMis7bkJ0Rj2.gif",
@@ -75,11 +77,11 @@ $(document).ready(function() {
       'asked': false
     },
     {
-      'question' : 'In New Jersey it is illegal to: ',
-      'answer': 'knit during the fishing season if you are male.',
-      'pic': "http://i.giphy.com/1463o17ejELYqs.gif",
-      options: ['knit during the fishing season if you are male.', 'eat more than three sandwiches at a wake.', 
-      'fish alone if you are an unmarried woman.', 'shoot a rabbit from a motorboat.'],
+      'question' : 'In Wyoming it is illegal to: ',
+      'answer': 'take a picture of a rabbit from January to April without an official permit.',
+      'pic': "http://i.giphy.com/Jjq7X7QCYuRUc.gif",
+      options: ['take a picture of a rabbit from January to April without an official permit.', 'use a lasso to catch a fish.', 'sell a hollow log.', 
+      'shoot any game other than whales from a moving automobile.'],
       'asked': false
     },
     ];
@@ -94,18 +96,7 @@ $(document).ready(function() {
       });
 
     //get random question -write code to check for dupes??
-
-      
-      function nextQuestion() {
-
-        var randomQuestion = Math.floor(Math.random() * questions.length);
-          thisQuestion = questions[randomQuestion];
-          justOptions = thisQuestion.options;
-          numberOfQuestions = questions.length;
-          console.log("thisQuestion: " + thisQuestion);
-          thisQuestion.asked =true;
-          console.log("thisQuestion asked?: " + thisQuestion.asked);
-        Array.prototype.randomize = function() {
+        Array.prototype.randomize = function(questions) {
           var i = this.length, j, temp;
             while ( --i ) {
             j = Math.floor( Math.random() * (i - 1) );
@@ -113,21 +104,33 @@ $(document).ready(function() {
               this[i] = this[j];
               this[j] = temp;
             }
+            return questions;
         }
-   
-        var optionMix = justOptions;
-        optionMix.randomize();
 
         if(!keepPlaying) { 
           return true;
-
         }
 
-        //break up chosen answer and corresponding questions and pics
+        //take random question and break it into question and answers, randomizing the answers
+      
+        function nextQuestion() {
+
+          thisQuestion = questions[num];
+          justOptions = thisQuestion.options;
+          numberOfQuestions = questions.length;
+          
+          console.log("thisQuestion question = " + questions[num].question)
+   
+          optionMix = justOptions;
+          optionMix.randomize();
+
+        //make chosen answer and corresponding questions and pics accessible
 
           currentAnswer = thisQuestion.answer;
           currentQuestion = thisQuestion.question;
           currentPic = thisQuestion.pic;
+
+          console.log("currentAnswer = " + currentAnswer);
          
          // display  chosen answer and questions
 
@@ -136,6 +139,7 @@ $(document).ready(function() {
           document.getElementById('choice2').innerHTML = optionMix[1];
           document.getElementById('choice3').innerHTML = optionMix[2];
           document.getElementById('choice4').innerHTML = optionMix[3];
+
       };
 
         // check to see if counter ran down, if so, display time up screen with gif and move on
@@ -148,7 +152,6 @@ $(document).ready(function() {
            if (count == -1) {
               document.getElementById('timer').innerHTML = 'Time\'s up!';
         
-              console.log("counter: " + counter + " count = " + count)
               $('#game1').hide();
               $('#game2').show();
             
@@ -162,6 +165,7 @@ $(document).ready(function() {
               $('#game1').delay(3500).fadeIn(100);
               wrong++;
               questionNumber++;
+              num++;
               keepPlaying = true;
               count = 33;
               return;
@@ -187,6 +191,7 @@ $(document).ready(function() {
             
             right++;
             questionNumber++;
+            num++;
             keepPlaying = true;
           }
           else if (!$(this).text().match(currentAnswer)){
@@ -199,6 +204,7 @@ $(document).ready(function() {
             $("#game2").delay(3000).fadeOut(100);
             wrong++;
             questionNumber++;
+            num++;
             keepPlaying = true;
           }
           if (questionNumber === numberOfQuestions) {
@@ -211,18 +217,13 @@ $(document).ready(function() {
             }
             else {
               $('#game1').html(nextQuestion);
-              console.log("thisQuestion answer: " + thisQuestion.answer);
-              
               $('#game1').delay(3000).fadeIn(100);
 
-              console.log("in game1 div = : " + currentQuestion);
               document.getElementById('btw').innerHTML = 'P.S. Every answer option included here is illegal in at least one American state.';
-              console.log("wrong: " + wrong + " and right: " + right);
-              console.log("questions asked = : " + questionNumber + " + and numberOfQuestions: " + numberOfQuestions);
+        
               keepPlaying: true;
             }
             if (questionNumber +1) {
-              console.log('questionNumber is: ' + questionNumber + ' and count is: ' + count);
               count = 33;
             }
       });
@@ -233,7 +234,7 @@ $(document).ready(function() {
     nextQuestion();
 
     // restart game on restart button click
- 
+      function restart() {
           $('#restartButton').click(function() {
             $('#game3').hide();
             $('#game1').hide();
@@ -244,7 +245,10 @@ $(document).ready(function() {
             wrong = 0;
             clearInterval(counter);
             questionNumber = 0;
+            num = 0;
             keepPlaying = true;
-         });           
+         });
+      };
+      restart();
 
 });
