@@ -38,7 +38,7 @@ $(document).ready(function() {
       options: ['let a donkey sleep in a bathtub.', 'dye a duckling blue and offer it for sale unless more than six are for sale at once.', 
       'snore unless all bedroom windows are closed and securely locked.', 
       'have a mustache if the bearer has a tendency to habitually kiss other humans.'],
-      'asked': false
+      // 'asked': false
     },
     {
       'question' : 'In New Jersey it is illegal to: ',
@@ -46,7 +46,7 @@ $(document).ready(function() {
       'pic': "http://i.giphy.com/1463o17ejELYqs.gif",
       options: ['knit during the fishing season if you are male.', 'eat more than three sandwiches at a wake.', 
       'fish alone if you are an unmarried woman.', 'shoot a rabbit from a motorboat.'],
-      'asked': false
+      // 'asked': false
     },
     {
       'question' : 'In Tennessee it is illegal to: ',
@@ -54,7 +54,7 @@ $(document).ready(function() {
      'pic': "http://i.giphy.com/oenruB2DKC7p6.gif",
       options: [ 'share your Netflix password.', 'pretend that one’s parents are rich.', 'serve butter substitutes in state prisons.', 
       'sell milk at liquor stores.'],
-      'asked': false
+      // 'asked': false
     },
     {
       'question' : 'In Florida it is illegal to: ',
@@ -64,7 +64,7 @@ $(document).ready(function() {
       'refuse a person a glass of water.', 
       'wear a bullet-proof vest while committing a murder.', 
       'have an ice cream cone in your back pocket at any time.'],
-      'asked': false
+      // 'asked': false
     },
     {
       'question' : 'In West Virginia it is illegal to: ',
@@ -74,7 +74,7 @@ $(document).ready(function() {
       'cross state lines with a duck atop one\'s head.', 
       'bathe between the months of October and March.', 
       'use profanity in front of a dead body which lies in a funeral home or in a coroners office.'],
-      'asked': false
+      // 'asked': false
     },
     {
       'question' : 'In Wyoming it is illegal to: ',
@@ -82,7 +82,7 @@ $(document).ready(function() {
       'pic': "http://i.giphy.com/Jjq7X7QCYuRUc.gif",
       options: ['take a picture of a rabbit from January to April without an official permit.', 'use a lasso to catch a fish.', 'sell a hollow log.', 
       'shoot any game other than whales from a moving automobile.'],
-      'asked': false
+      // 'asked': false
     },
     ];
 
