@@ -92,10 +92,13 @@ $(document).ready(function() {
 
         $('#start').hide();
         $('#game1').show();
+        num = 0;
         counter = setInterval(counting, 1000);
       });
 
-    //get random question -write code to check for dupes??
+
+    // put questions in random order
+
         Array.prototype.randomize = function(questions) {
           var i = this.length, j, temp;
             while ( --i ) {
@@ -142,7 +145,10 @@ $(document).ready(function() {
 
       };
 
-        // check to see if counter ran down, if so, display time up screen with gif and move on
+      nextQuestion();
+        // check to see if counter ran down, showing 0 on screen so go to -1
+        // if 0 showing, display time up screen with gif, increment wrong answer,
+        //  and move to the next question
 
       var counting = function() {
         count = count -1;
@@ -172,10 +178,10 @@ $(document).ready(function() {
               }
       };
 
-      // check to see if user answer is right or wrong, 
-      // track how many questions asked, rinse repeat
-
+        // check to see if user answer is right or wrong, 
+      // track how many questions asked, increment wrong or right answers, increment question number, rinse, repeat
       function compareGuess() {
+        console.log("2nd num = " + num);
 
         $(document).on('click','.guessButton', function() {    
           if($(this).text().match(currentAnswer)) {
@@ -213,32 +219,33 @@ $(document).ready(function() {
               clearInterval(counter);
               document.getElementById('win').innerHTML = 'Correct answers: ' + right + '.';
               document.getElementById('loss').innerHTML = 'Wrong answers: ' + wrong + '.';
+              document.getElementById('btw').innerHTML = 'P.S. Every answer option included here is illegal in at least one American state.';
+
               keepPlaying: false;
+              console.log("3rd num = " + num);
             }
             else {
               $('#game1').html(nextQuestion);
-              $('#game1').delay(3000).fadeIn(100);
-
-              document.getElementById('btw').innerHTML = 'P.S. Every answer option included here is illegal in at least one American state.';
-        
+              $('#game1').delay(3000).fadeIn(100);        
               keepPlaying: true;
             }
             if (questionNumber +1) {
               count = 33;
+              console.log("4th num = " + num);
             }
       });
 
     };
 
     compareGuess();
-    nextQuestion();
+    
 
     // restart game on restart button click
+
       function restart() {
           $('#restartButton').click(function() {
             $('#game3').hide();
-            $('#game1').hide();
-            $('#start').delay(1000).fadeIn(100);
+            $('#game1').delay(1000).fadeIn(100);
             thisQuestion;
             count = 30;
             right = 0;
@@ -246,9 +253,11 @@ $(document).ready(function() {
             clearInterval(counter);
             questionNumber = 0;
             num = 0;
+            counter = setInterval(counting, 1000);
             keepPlaying = true;
          });
       };
+
       restart();
 
 });
